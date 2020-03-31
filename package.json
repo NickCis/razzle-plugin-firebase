@@ -5,10 +5,15 @@
   "main": "index.js",
   "author": "Nicolas Cisco <ncis20@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "format": "prettier index.js --write"
+  },
   "dependencies": {
-    "copy-webpack-plugin": "^5.1.1"
+    "copy-webpack-plugin": "^5.1.1",
+    "source-map-support": "^0.5.16"
   },
   "devDependencies": {
+    "prettier": "^2.0.2",
     "razzle": "^3.0.0"
   }
 }

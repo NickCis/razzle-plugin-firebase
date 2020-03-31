@@ -22,7 +22,7 @@ const DefaultOptions = {
 
 function modify(config, { target, dev }, webpack, opts = {}) {
   if (target === 'node') {
-    const options = Object.assign({}, opts, DefaultOptions);
+    const options = Object.assign({}, DefaultOptions, opts);
     const pkg = require(resolveApp(options.pkg));
     const firebase = require(resolveApp(options.firebase));
     const hosting = options.target
@@ -45,22 +45,26 @@ function modify(config, { target, dev }, webpack, opts = {}) {
 
     config.plugins.push({
       apply: compiler => {
-        compiler.hooks.emit.tapAsync('razzle-plugin-firebase', (compilation, callback) => {
-          compilation.assets['package.json'] = {
-            source: () => functionsPkg,
-            size: () => functionsPkg.length,
-          };
-          callback();
-        });
+        compiler.hooks.emit.tapAsync(
+          'razzle-plugin-firebase',
+          (compilation, callback) => {
+            compilation.assets['package.json'] = {
+              source: () => functionsPkg,
+              size: () => functionsPkg.length,
+            };
+            callback();
+          }
+        );
       },
     });
 
     if (dev) {
       config.entry = config.entry.filter(e => !e.startsWith('webpack'));
+      config.entry.unshift('source-map-support/register');
 
       // No start server on dev
       config.plugins = config.plugins.filter(
-        plugin => plugin.constructor.name !== 'StartServerPlugin',
+        plugin => plugin.constructor.name !== 'StartServerPlugin'
       );
 
       // Copy public file to the one firebase emulator will use
@@ -76,43 +80,40 @@ function modify(config, { target, dev }, webpack, opts = {}) {
         );
       }
 
-      const firebaseBin = path.join(
-        'firebase-tools',
-        require('firebase-tools/package.json').bin.firebase,
+      const firebaseBin = require.resolve(
+        path.join(
+          'firebase-tools',
+          require('firebase-tools/package.json').bin.firebase
+        )
       );
       config.plugins.push({
         apply: compiler => {
-          compiler.hooks.done.tapAsync('razzle-plugin-firebase', (compilation, callback) => {
-            if (os.platform() === 'win32' || options.exec) {
-              const p = exec(
-                [
-                  'node',
-                  firebaseBin,
-                  options.start
-                ].join(' '),
-                error => {
-                  if (error)
-                    throw error;
-                }
-              );
+          compiler.hooks.done.tapAsync(
+            'razzle-plugin-firebase',
+            (compilation, callback) => {
+              if (os.platform() === 'win32' || options.exec) {
+                const p = child.exec(
+                  ['node', firebaseBin, options.start].join(' '),
+                  error => {
+                    if (error) throw error;
+                  }
+                );
 
-              p.stdout.pipe(process.stdout);
-              p.stderr.pipe(process.stderr);
-            } else {
-              const p = spawn(
-                'node',
-                [firebaseBin, options.start],
-                { stdio: 'inherit' }
-              );
+                p.stdout.pipe(process.stdout);
+                p.stderr.pipe(process.stderr);
+              } else {
+                const p = child.spawn('node', [firebaseBin, options.start], {
+                  stdio: 'inherit',
+                });
 
-              p.on('close', error => {
-                if (error)
-                  throw error;
-              });
+                p.on('close', error => {
+                  if (error) throw error;
+                });
+              }
+
+              callback();
             }
-
-            callback();
-          });
+          );
         },
       });
     }
