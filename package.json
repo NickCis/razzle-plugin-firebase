@@ -1,0 +1,14 @@
+{
+  "name": "razzle-plugin-firebase",
+  "version": "0.0.1",
+  "description": "Razzle plugin for firebase configuration",
+  "main": "index.js",
+  "author": "Nicolas Cisco <ncis20@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "copy-webpack-plugin": "^5.1.1"
+  },
+  "devDependencies": {
+    "razzle": "^3.0.0"
+  }
+}
