@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Razzle plugin for firebase configuration",
   "main": "index.js",
+  "repository": "git@github.com:NickCis/razzle-plugin-firebase.git",
   "author": "Nicolas Cisco <ncis20@gmail.com>",
   "license": "MIT",
   "scripts": {
