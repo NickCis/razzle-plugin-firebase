@@ -80,6 +80,7 @@ function modify(config, { target, dev }, webpack, opts = {}) {
         );
       }
 
+      let proc;
       const firebaseBin = require.resolve(
         path.join(
           'firebase-tools',
@@ -91,24 +92,26 @@ function modify(config, { target, dev }, webpack, opts = {}) {
           compiler.hooks.done.tapAsync(
             'razzle-plugin-firebase',
             (compilation, callback) => {
-              if (os.platform() === 'win32' || options.exec) {
-                const p = child.exec(
-                  ['node', firebaseBin, options.start].join(' '),
-                  error => {
+              if (!proc) {
+                if (os.platform() === 'win32' || options.exec) {
+                  proc = child.exec(
+                    ['node', firebaseBin, options.start].join(' '),
+                    error => {
+                      if (error) throw error;
+                    }
+                  );
+
+                  proc.stdout.pipe(process.stdout);
+                  proc.stderr.pipe(process.stderr);
+                } else {
+                  proc = child.spawn('node', [firebaseBin, options.start], {
+                    stdio: 'inherit',
+                  });
+
+                  proc.on('close', error => {
                     if (error) throw error;
-                  }
-                );
-
-                p.stdout.pipe(process.stdout);
-                p.stderr.pipe(process.stderr);
-              } else {
-                const p = child.spawn('node', [firebaseBin, options.start], {
-                  stdio: 'inherit',
-                });
-
-                p.on('close', error => {
-                  if (error) throw error;
-                });
+                  });
+                }
               }
 
               callback();
