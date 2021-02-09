@@ -4,7 +4,6 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const child = require('child_process');
-const paths = require('razzle/config/paths');
 const CopyPlugin = require('copy-webpack-plugin');
 
 // Make sure any symlinks in the project folder are resolved:
@@ -20,9 +19,9 @@ const DefaultOptions = {
   start: 'emulators:start',
 };
 
-function modify(config, { target, dev }, webpack, opts = {}) {
+function modifyWebpackConfig({ env: { target, dev }, webpackConfig: config, webpackObject: webpack, options: { pluginOptions: opts }, paths }) {
   if (target === 'node') {
-    const options = Object.assign({}, DefaultOptions, opts);
+    const options = Object.assign({}, DefaultOptions, opts || {});
     const pkg = require(resolveApp(options.pkg));
     const firebase = require(resolveApp(options.firebase));
     const hosting = options.target
@@ -59,8 +58,10 @@ function modify(config, { target, dev }, webpack, opts = {}) {
     });
 
     if (dev) {
-      config.entry = config.entry.filter(e => !e.startsWith('webpack'));
-      config.entry.unshift('source-map-support/register');
+      for (const key of Object.keys(config.entry)) {
+        config.entry[key] = config.entry[key].filter(e => !e.startsWith('webpack'));
+        config.entry[key].unshift('source-map-support/register');
+      }
 
       // No start server on dev
       config.plugins = config.plugins.filter(
@@ -125,4 +126,4 @@ function modify(config, { target, dev }, webpack, opts = {}) {
   return config;
 }
 
-module.exports = modify;
+module.exports = { modifyWebpackConfig };
