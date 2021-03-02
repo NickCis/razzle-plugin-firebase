@@ -19,7 +19,13 @@ const DefaultOptions = {
   start: 'emulators:start',
 };
 
-function modifyWebpackConfig({ env: { target, dev }, webpackConfig: config, webpackObject: webpack, options: { pluginOptions: opts }, paths }) {
+function modifyWebpackConfig({
+  env: { target, dev },
+  webpackConfig: config,
+  webpackObject: webpack,
+  options: { pluginOptions: opts },
+  paths,
+}) {
   if (target === 'node') {
     const options = Object.assign({}, DefaultOptions, opts || {});
     const pkg = require(resolveApp(options.pkg));
@@ -59,13 +65,19 @@ function modifyWebpackConfig({ env: { target, dev }, webpackConfig: config, webp
 
     if (dev) {
       for (const key of Object.keys(config.entry)) {
-        config.entry[key] = config.entry[key].filter(e => !e.startsWith('webpack'));
+        // Remove hmr
+        config.entry[key] = config.entry[key].filter(
+          e => !e.includes('webpack/hot/poll')
+        );
         config.entry[key].unshift('source-map-support/register');
       }
 
-      // No start server on dev
+      // No start server on dev and remove hmr
       config.plugins = config.plugins.filter(
-        plugin => plugin.constructor.name !== 'StartServerPlugin'
+        plugin =>
+          !['StartServerPlugin', 'HotModuleReplacementPlugin'].includes(
+            plugin.constructor.name
+          )
       );
 
       // Copy public file to the one firebase emulator will use
