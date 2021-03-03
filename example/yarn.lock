@@ -7444,9 +7444,9 @@ node-emoji@^1.4.1:
     lodash.toarray "^4.4.0"
 
 node-fetch@^2.2.0, node-fetch@^2.3.0, node-fetch@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-forge@0.7.4:
   version "0.7.4"
@@ -9022,11 +9022,12 @@ razzle-dev-utils@^3.0.0:
     strip-ansi "5.0.0"
 
 razzle-plugin-firebase@^0.0.2:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.1.tgz#652064c1ff6e8ffffca2521f0102d56e677f160c"
-  integrity sha512-KQzkQEHKaaEliQixWjWNMzC4OSvd2oL9LjhbCRhd/Haxik1q2y830QgW7xrU/dP8RjszeWnjJlyj6uLXrivDRA==
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.2.tgz#a8b85c47caeaca664891f5173cc107d4890fc7f7"
+  integrity sha512-9B5Osf+OUAWZrmtm01wgTNhpenCLAhQfj7yNFPd1Tc+bXE8xBEnxh4hUvgGYseBfaSXniNd+nw9SZAmNzPQQXA==
   dependencies:
     copy-webpack-plugin "^5.1.1"
+    source-map-support "^0.5.16"
 
 razzle@^3.0.0:
   version "3.0.0"
@@ -9881,6 +9882,14 @@ source-map-support@^0.4.15:
   integrity sha512-try0/JqxPLF9nOjvSta7tVondkP5dwgyLDjVoyMDlmjugT2lRZ1OfsrYTkCd2hkDnJTKRbO/Rl3orm8vlsUzbA==
   dependencies:
     source-map "^0.5.6"
+
+source-map-support@^0.5.16:
+  version "0.5.19"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
+  integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  dependencies:
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
 
 source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.12:
   version "0.5.16"
