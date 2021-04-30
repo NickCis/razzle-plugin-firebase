@@ -9022,11 +9022,12 @@ razzle-dev-utils@^3.0.0:
     strip-ansi "5.0.0"
 
 razzle-plugin-firebase@^0.0.2:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.1.tgz#652064c1ff6e8ffffca2521f0102d56e677f160c"
-  integrity sha512-KQzkQEHKaaEliQixWjWNMzC4OSvd2oL9LjhbCRhd/Haxik1q2y830QgW7xrU/dP8RjszeWnjJlyj6uLXrivDRA==
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.2.tgz#a8b85c47caeaca664891f5173cc107d4890fc7f7"
+  integrity sha512-9B5Osf+OUAWZrmtm01wgTNhpenCLAhQfj7yNFPd1Tc+bXE8xBEnxh4hUvgGYseBfaSXniNd+nw9SZAmNzPQQXA==
   dependencies:
     copy-webpack-plugin "^5.1.1"
+    source-map-support "^0.5.16"
 
 razzle@^3.0.0:
   version "3.0.0"
@@ -9882,6 +9883,14 @@ source-map-support@^0.4.15:
   dependencies:
     source-map "^0.5.6"
 
+source-map-support@^0.5.16:
+  version "0.5.19"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
+  integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  dependencies:
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
+
 source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.12:
   version "0.5.16"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
@@ -9982,9 +9991,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
