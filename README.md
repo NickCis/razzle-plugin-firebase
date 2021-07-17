@@ -37,6 +37,7 @@ The plugin allows the following option keys:
 - `target`: In the case `hostings` on the firebase file is an array, the [hosting target](https://firebase.google.com/docs/cli/targets) value
 - `exec`: Use `exec` instead of `spawn` (_default: `false`_)
 - `start`: Firebase command to run in order to start emulators (_default: `emulators:start`_)
+- `serverIndex`: Server output filename (_default: `index.js`_)
 
 ```js
 // razzle.config.js file

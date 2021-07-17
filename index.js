@@ -17,6 +17,7 @@ const DefaultOptions = {
   target: '',
   exec: false,
   start: 'emulators:start',
+  serverIndex: 'index.js',
 };
 
 function modifyWebpackConfig({
@@ -36,7 +37,7 @@ function modifyWebpackConfig({
     const functions = firebase.functions || {};
 
     // Correct servers output
-    config.output.filename = 'index.js';
+    config.output.filename = options.serverIndex || 'index.js';
     config.output.path = resolveApp(functions.source || 'functions');
 
     // Add functions/package.json
