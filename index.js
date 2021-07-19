@@ -11,6 +11,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
+function toArray(e) {
+  if (Array.isArray(e))
+    return e;
+  return [e];
+}
+
 const DefaultOptions = {
   pkg: 'package.json',
   firebase: 'firebase.json',
@@ -109,7 +115,7 @@ function modifyWebpackConfig({
               if (!proc) {
                 if (os.platform() === 'win32' || options.exec) {
                   proc = child.exec(
-                    ['node', firebaseBin, options.start].join(' '),
+                    ['node', firebaseBin, ...toArray(options.start)].join(' '),
                     error => {
                       if (error) throw error;
                     }
@@ -118,7 +124,7 @@ function modifyWebpackConfig({
                   proc.stdout.pipe(process.stdout);
                   proc.stderr.pipe(process.stderr);
                 } else {
-                  proc = child.spawn('node', [firebaseBin, options.start], {
+                  proc = child.spawn('node', [firebaseBin, ...toArray(options.start)], {
                     stdio: 'inherit',
                   });
 

@@ -36,7 +36,7 @@ The plugin allows the following option keys:
 - `firebase`: Project's `firebase.json` file (_default: `firebase.json`_)
 - `target`: In the case `hostings` on the firebase file is an array, the [hosting target](https://firebase.google.com/docs/cli/targets) value
 - `exec`: Use `exec` instead of `spawn` (_default: `false`_)
-- `start`: Firebase command to run in order to start emulators (_default: `emulators:start`_)
+- `start`: Firebase command to run in order to start emulators, if necessary an array can be passed to set additional arguments, eg: `['emulators:start', '--only', 'hosting,functions,firestore']` (_default: `emulators:start`_)
 - `serverIndex`: Server output filename (_default: `index.js`_)
 
 ```js
