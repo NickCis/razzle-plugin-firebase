@@ -7982,9 +7982,9 @@ path-key@^2.0.0, path-key@^2.0.1:
   integrity sha1-QRyttXTFoUDTpLGRDUDYDMn0C0A=
 
 path-parse@^1.0.5, path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-to-regexp@0.1.7:
   version "0.1.7"
@@ -9022,11 +9022,12 @@ razzle-dev-utils@^3.0.0:
     strip-ansi "5.0.0"
 
 razzle-plugin-firebase@^0.0.2:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.1.tgz#652064c1ff6e8ffffca2521f0102d56e677f160c"
-  integrity sha512-KQzkQEHKaaEliQixWjWNMzC4OSvd2oL9LjhbCRhd/Haxik1q2y830QgW7xrU/dP8RjszeWnjJlyj6uLXrivDRA==
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/razzle-plugin-firebase/-/razzle-plugin-firebase-0.0.2.tgz#a8b85c47caeaca664891f5173cc107d4890fc7f7"
+  integrity sha512-9B5Osf+OUAWZrmtm01wgTNhpenCLAhQfj7yNFPd1Tc+bXE8xBEnxh4hUvgGYseBfaSXniNd+nw9SZAmNzPQQXA==
   dependencies:
     copy-webpack-plugin "^5.1.1"
+    source-map-support "^0.5.16"
 
 razzle@^3.0.0:
   version "3.0.0"
@@ -9881,6 +9882,14 @@ source-map-support@^0.4.15:
   integrity sha512-try0/JqxPLF9nOjvSta7tVondkP5dwgyLDjVoyMDlmjugT2lRZ1OfsrYTkCd2hkDnJTKRbO/Rl3orm8vlsUzbA==
   dependencies:
     source-map "^0.5.6"
+
+source-map-support@^0.5.16:
+  version "0.5.19"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
+  integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  dependencies:
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
 
 source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.12:
   version "0.5.16"
